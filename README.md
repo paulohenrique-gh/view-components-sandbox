@@ -1,24 +1,15 @@
-# README
+This application doesn't have funcionalities and its only purpose is to experiment with the view_component gem
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Add `view_component` to `Gemfile`:
+```ruby
+gem 'view_component'
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Generate new component:
+```shell
+rails generate component HelloWorld arg1 arg2
+```
+This will generate the following files in the `app/components` directory:
+    - `hello_world_component.rb` - A file for the Ruby class that encapsulates the component logic
+    - `hello_world_component.html.erb` - The template file for the component HTML
+    - `hello_world_component_test.rb` - The test file for the component
