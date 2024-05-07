@@ -1,0 +1,19 @@
+<div>
+  <% if @img_url.present? %>
+    <div>
+      <img src="<%= @img_url %>">
+    </div>
+  <% end %>
+
+  <% if header? %>
+    <h2>
+      <%= header %>
+    </h2>
+  <% end %>
+
+  <% if body? %>
+    <div>
+      <%= body %>
+    </div>
+  <% end %>
+</div>

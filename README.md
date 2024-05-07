@@ -28,7 +28,7 @@ Generators:
 rails generate component BaseComponents::Button
 ```
 
-- Change test frameword:
+- Change test framework:
 ```shell
 rails generate component Form --test-framework rspec
 ```
@@ -48,7 +48,7 @@ Link to documentation: https://v2.lookbook.build/
 
 Lookbook is a UI tool that allows developers to preview components in isolation.
 
-Before setting up the route, you can add the gem `listen` for live updates in the browser:
+You can add the gem `listen` for live updates in the browser:
 
 ```ruby
 gem "listen"
@@ -68,7 +68,7 @@ end
 And then you can access the previews here: http://localhost:3000/lookbook
 
 
-The preview files are located in the test/components/previews.
+The preview files are located in `test/components/previews`.
 
 You can make dynamic previews for the component in the browser:
 
