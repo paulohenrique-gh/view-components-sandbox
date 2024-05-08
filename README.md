@@ -1,4 +1,5 @@
-### This application doesn't have funcionalities and its only purpose is to experiment with the view_component gem
+### This application doesn't have funcionalities and its only purpose is to experiment with the view_component gem.
+
 
 ## ViewComponent
 
@@ -175,15 +176,62 @@ end
 
 # product_component_preview.rb
 def collection
-products = [
-  { title: 'Product 1', description: 'Description 1'},
-  { title: 'Product 2', description: 'Description 2'},
-  { title: 'Product 3', description: 'Description 3'}
-]
+  products = [
+    { title: 'Product 1', description: 'Description 1'},
+    { title: 'Product 2', description: 'Description 2'},
+    { title: 'Product 3', description: 'Description 3'}
+  ]
 
-render ProductComponent.with_collection(products)
+  render ProductComponent.with_collection(products)
 end
 ```
+___
+## Helpers
+
+Link to documentation: https://viewcomponent.org/guide/helpers.html
+
+You can use helpers by including them in the component class or with the `helpers` proxy, which can be used with `delegate`
+
+```ruby
+module ColorHelper
+  def random_color
+    ['red', 'blue', 'orangered', 'grey', 'black'].sample
+  end
+end
+
+# with include
+class GeneralComponents::ButtonComponent < ViewComponent::Base
+  include ColorHelper
+
+  def color
+    random_color
+  end
+end
+
+# with helpers proxy
+class GeneralComponents::ButtonComponent < ViewComponent::Base
+  def color
+    helpers.random_color
+  end
+end
+
+# with delegate
+class GeneralComponents::ButtonComponent < ViewComponent::Base
+  delegate :random_color, to: :helpers
+
+  def color
+    random_color
+  end
+```
+---
+## Other features
+
+- Conditional Rendering: https://viewcomponent.org/guide/conditional_rendering.html
+- Lifecycle: https://viewcomponent.org/guide/lifecycle.html
+- Templates: https://viewcomponent.org/guide/templates.html
+- Translations: https://viewcomponent.org/guide/translations.html
+- JavaScript and CSS: https://viewcomponent.org/guide/javascript_and_css.html
+- Testing: https://viewcomponent.org/guide/testing.html
 
 ---
 ## General notes
@@ -209,4 +257,8 @@ Example:
     <p><%= content %></p>
 </div>
 ```
+---
+## Other references
 
+YouTube: https://www.youtube.com/watch?v=vyO07H8chUE
+Sides: https://docs.google.com/presentation/d/e/2PACX-1vT7VOxx52eP14BSz8YO5vFGUfMyKaa0mWMFrn_vzx239YalKZPuhKkFGAJCzWGXemiEfLYLN5pn6k94/pub?start=false&loop=false&delayms=60000#slide=id.g2969177e3d2_0_160

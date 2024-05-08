@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GeneralComponents::ButtonComponent < ViewComponent::Base
+  delegate :random_color, to: :helpers
+
   def initialize(text:, disabled:)
     super
     @text = text
@@ -9,5 +11,9 @@ class GeneralComponents::ButtonComponent < ViewComponent::Base
 
   def disabled?
     @disabled
+  end
+
+  def color
+    random_color
   end
 end
