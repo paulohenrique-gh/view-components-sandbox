@@ -81,4 +81,33 @@ class ButtonComponentPreview < Lookbook::Preview
   end
 end
 ```
+---
+## Slots
+
+Link to documentation: https://viewcomponent.org/guide/slots.html
+
+---
+## General notes
+The blocked passed to a new component instance can be accessed in the template by calling the `content` method
+
+Reference: https://viewcomponent.org/guide/getting-started.html
+
+Example:
+
+```ruby
+# home/index.html.erb
+<%= render ProductComponent.new(name: 'My Product') do %>
+    This is the description of the product
+<% end %>
+
+# or
+<%= render ProductComponent.new(name: 'My Product').with_content('This is the description of the product') %>
+
+# components/product_component.html.erb
+<div>
+    <%= @name %>
+    
+    <p><%= content %></p>
+</div>
+```
 
