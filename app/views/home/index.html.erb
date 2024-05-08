@@ -14,10 +14,17 @@
     </div>
   <% end %>
 
-  <%= component.with_button(text: 'Button 1', disabled: false) %>
-  <%= component.with_button(text: 'Button 2', disabled: false) %>
-  <%= component.with_button(text: 'Button 3', disabled: false) %>
-  <%= component.with_button(text: 'Button 4', disabled: false) do %>
-    teste testes
-  <% end %>
+  <%=
+      component.with_buttons(
+      [
+        { text: 'Button 1', disabled: false },
+        { text: 'Button 2', disabled: false },
+        { text: 'Button 3', disabled: true }
+      ]
+    )
+  %>
 <% end %>
+
+<hr>
+
+<%= render ProductComponent.new(product: { title: 'Title of the product', description: 'Description of the product' }) %>

@@ -86,6 +86,105 @@ end
 
 Link to documentation: https://viewcomponent.org/guide/slots.html
 
+Example:
+```ruby
+# card_component.rb
+class GeneralComponents::CardComponent < ViewComponent::Base
+  renders_one :header
+  renders_one :body
+  renders_many :buttons, GeneralComponents::ButtonComponent
+
+  def initialize(img_url: nil)
+    @img_url = img_url
+  end
+end
+
+# card_component.html.erb
+<div>
+  <% if @img_url.present? %>
+    <div>
+      <img src="<%= @img_url %>">
+    </div>
+  <% end %>
+
+  <% if header? %>
+    <h2>
+      <%= header %>
+    </h2>
+  <% end %>
+
+  <% if body? %>
+    <div>
+      <%= body %>
+    </div>
+  <% end %>
+
+  <% buttons.each do |button| %>
+    <%= button %>
+  <% end %>
+</div>
+
+# index.html.erb
+<%= render GeneralComponents::CardComponent.new(img_url: 'https://placehold.co/600x400.png') do |component| %>
+  <% component.with_header do %>
+    <h2>Card Title</h2>
+  <% end %>
+
+  <%= component.with_body do %>
+    <div>
+      <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
+      <p>Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.</p>
+    </div>
+  <% end %>
+
+  <%=
+      component.with_buttons(
+      [
+        { text: 'Button 1', disabled: false },
+        { text: 'Button 2', disabled: false },
+        { text: 'Button 3', disabled: true }
+      ]
+    )
+  %>
+```
+
+---
+## Rendering collections
+
+Link to documentation: https://viewcomponent.org/guide/collections.html
+
+User `with_collection_parameter` do set the name of the collection parameter
+
+```ruby
+# product_component.rb
+class ProductComponent < ViewComponent::Base
+  with_collection_parameter :product
+
+  def initialize(product:)
+    @title = product[:title]
+    @description = product[:description]
+  end
+end
+
+# product_component.html.erb
+<li>
+  <strong><%= @title %>:</strong>
+  <br>
+  <%= @description %>
+</li>
+
+# product_component_preview.rb
+def collection
+products = [
+  { title: 'Product 1', description: 'Description 1'},
+  { title: 'Product 2', description: 'Description 2'},
+  { title: 'Product 3', description: 'Description 3'}
+]
+
+render ProductComponent.with_collection(products)
+end
+```
+
 ---
 ## General notes
 The blocked passed to a new component instance can be accessed in the template by calling the `content` method
