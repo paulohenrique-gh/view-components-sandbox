@@ -261,4 +261,5 @@ Example:
 ## Other references
 
 YouTube: https://www.youtube.com/watch?v=vyO07H8chUE
-Sides: https://docs.google.com/presentation/d/e/2PACX-1vT7VOxx52eP14BSz8YO5vFGUfMyKaa0mWMFrn_vzx239YalKZPuhKkFGAJCzWGXemiEfLYLN5pn6k94/pub?start=false&loop=false&delayms=60000#slide=id.g2969177e3d2_0_160
+
+Slides: https://docs.google.com/presentation/d/e/2PACX-1vT7VOxx52eP14BSz8YO5vFGUfMyKaa0mWMFrn_vzx239YalKZPuhKkFGAJCzWGXemiEfLYLN5pn6k94/pub?start=false&loop=false&delayms=60000#slide=id.g2969177e3d2_0_160
