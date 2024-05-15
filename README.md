@@ -154,7 +154,7 @@ end
 
 Link to documentation: https://viewcomponent.org/guide/collections.html
 
-User `with_collection_parameter` do set the name of the collection parameter
+Use `with_collection_parameter` to set the name of the collection parameter
 
 ```ruby
 # product_component.rb
